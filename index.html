@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OfNYC</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', cursive;
+      background-color: black;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #111;
+      border-bottom: 1px solid #333;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 1rem;
+      text-decoration: none;
+      transition: transform 0.3s, color 0.3s;
+    }
+
+    nav a:hover {
+      color: #ccc;
+      transform: scale(1.1);
+    }
+
+    .content {
+      padding: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+
+    .content.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    button {
+      background: white;
+      color: black;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+
+    button:hover {
+      background: #ccc;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="OfNYC Logo" />
+    <nav>
+      <a href="#" onclick="showPage('home')">Home</a>
+      <a href="#" onclick="showPage('about')">About</a>
+      <a href="#" onclick="showPage('doing')">What We Are Doing</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="content show">
+      <h1>Welcome to OfNYC</h1>
+      <p>Crafting the future of financial tools and services from the heart of New York City.</p>
+      <button onclick="alert('Stay tuned for updates!')">Get Updates</button>
+    </section>
+
+    <section id="about" class="content" style="display: none;">
+      <h1>About Us</h1>
+      <p>OfNYC is focused on building elegant and efficient financial technology solutions tailored to modern needs. With a keen eye on design, simplicity, and user empowerment, we’re setting new standards for financial innovation.</p>
+    </section>
+
+    <section id="doing" class="content" style="display: none;">
+      <h1>What We Are Doing</h1>
+      <p>We are currently researching, prototyping, and developing a suite of digital tools designed to help individuals and businesses better manage, analyze, and optimize their financial lives. From budgeting apps to automated investment solutions—stay tuned.</p>
+    </section>
+  </main>
+
+  <script>
+    function showPage(pageId) {
+      const sections = document.querySelectorAll('main .content');
+      sections.forEach(section => {
+        section.classList.remove('show');
+        section.style.display = 'none';
+      });
+
+      const target = document.getElementById(pageId);
+      target.style.display = 'block';
+
+      // Trigger animation
+      setTimeout(() => {
+        target.classList.add('show');
+      }, 50);
+    }
+  </script>
+</body>
+</html>
